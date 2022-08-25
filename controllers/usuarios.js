@@ -44,7 +44,7 @@ const usuariosPost = async (req, res = response) => {
   });
 };
 const usuariosPut = async (req, res = response) => {
-  const id = req.params.id;
+  const id = req.params;
   const { _id, password, google, correo, ...resto } = req.body;
 
   //* Todo validar contra base de Datos
@@ -65,12 +65,13 @@ const usuariosPut = async (req, res = response) => {
 };
 const usuariosDelete = async (req, res = response) => {
   const { id } = req.params;
+  const uid = req.uid;
 
   //* Borrado Fisicamente
   //* const usuario = await Usuario.findByIdAndDelete(id);
 
   const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
-
+  const usuarioAutenticado = req.usuario;
   res.json({
     usuario,
     mgs: "delete Api - Controlador",
