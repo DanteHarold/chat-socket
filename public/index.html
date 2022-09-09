@@ -1,12 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Acceso Denegado</title>
-  </head>
+<html>
+  <head></head>
   <body>
-    <h1>Acceso Denegado</h1>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div
+      id="g_id_onload"
+      data-client_id="1003886884610-05jg0v5i0mpo8b7esgtitb90723gmep4.apps.googleusercontent.com"
+      data-login_uri="http://localhost:3000/api/auth/login"
+      data-auto_prompt="false"
+    ></div>
+    <div
+      class="g_id_signin"
+      data-type="standard"
+      data-size="large"
+      data-theme="outline"
+      data-text="sign_in_with"
+      data-shape="rectangular"
+      data-logo_alignment="left"
+    ></div>
+    <a class="g_id_signout">Sign Out</a>
+    <script>
+      const button = document.querySelector(".g_id_signout");
+      button.onclick = () => {
+        console.log("hola");
+        google.accounts.id.disableAutoSelect();
+      };
+    </script>
   </body>
 </html>
