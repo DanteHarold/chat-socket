@@ -32,6 +32,7 @@ router.put(
     ),
     validarCampos,
   ],
-  actualizarImagenCloudinary
+  actualizarImagen
+  // actualizarImagenCloudinary
 );
 module.exports = router;

@@ -6,8 +6,10 @@ const subirArchivo = (
   carpeta = ""
 ) => {
   return new Promise((resolve, reject) => {
+    //* Recibe el Archivo
     const { archivo } = files;
 
+    //* Obteniendo la Extension del Archivo
     const nombreCortado = archivo.name.split(".");
     const extension = nombreCortado[nombreCortado.length - 1];
 
@@ -18,10 +20,13 @@ const subirArchivo = (
       );
     }
 
+    //*Crear un Nombre Unico
     const nombreTemp = uuidv4() + "." + extension;
 
+    //* El Path del Archivo Generado
     const uploadPath = path.join(__dirname, "../uploads/", carpeta, nombreTemp);
 
+    //* Moviendo al Path Dado
     archivo.mv(uploadPath, (err) => {
       if (err) {
         reject(err);

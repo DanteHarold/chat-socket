@@ -14,13 +14,20 @@ const buscarUsuarios = async (termino = "", res = response) => {
 
   const regex = new RegExp(termino, "i");
 
-  const usuarios = await Usuario.find({
-    $or: [{ nombre: regex }, { correo: regex }],
-    $and: [{ estado: true }],
-  });
+  const [usuarios, total] = await Promise.all([
+    Usuario.find({
+      $or: [{ nombre: regex }, { correo: regex }],
+      $and: [{ estado: true }],
+    }),
+    Usuario.count({
+      $or: [{ nombre: regex }, { correo: regex }],
+      $and: [{ estado: true }],
+    }),
+  ]);
 
   res.json({
     results: usuarios,
+    count: total,
   });
 };
 const buscarCategorias = async (termino = "", res = response) => {

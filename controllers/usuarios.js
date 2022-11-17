@@ -44,7 +44,7 @@ const usuariosPost = async (req, res = response) => {
   });
 };
 const usuariosPut = async (req, res = response) => {
-  const id = req.params;
+  const { id } = req.params;
   const { _id, password, google, correo, ...resto } = req.body;
 
   //* Todo validar contra base de Datos
@@ -59,13 +59,13 @@ const usuariosPut = async (req, res = response) => {
   const usuario = await Usuario.findByIdAndUpdate(id, resto);
 
   res.json({
-    mgs: "put Api - Controlador",
+    mgs: "put Api - ControladorPut",
     usuario,
   });
 };
 const usuariosDelete = async (req, res = response) => {
   const { id } = req.params;
-  const uid = req.uid;
+  //const uid = req.uid;
 
   //* Borrado Fisicamente
   //* const usuario = await Usuario.findByIdAndDelete(id);
@@ -74,6 +74,7 @@ const usuariosDelete = async (req, res = response) => {
   const usuarioAutenticado = req.usuario;
   res.json({
     usuario,
+    usuarioAutenticado,
     mgs: "delete Api - Controlador",
   });
 };

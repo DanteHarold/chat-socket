@@ -24,8 +24,8 @@ class Server {
 
     //* Middlewares
     this.middlewares();
-    //* Rutas de mi Aplicación
 
+    //* Rutas de mi Aplicación
     this.routes();
   }
 
