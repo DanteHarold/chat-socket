@@ -1,4 +1,4 @@
-# RestServer + WebServer
+# RestServer + WebServer + Sockets
 
 ```
     npm install
