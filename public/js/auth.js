@@ -10,14 +10,11 @@ $miFormulario.addEventListener("submit", (e) => {
     }
   }
 
-  fetch(
-    "https://restserver-node-production.up.railway.app" + "/api/auth/login",
-    {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-Type": "application/json" },
-    }
-  )
+  fetch("https://chat-socket-production.up.railway.app" + "/api/auth/login", {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: { "Content-Type": "application/json" },
+  })
     .then((resp) => resp.json())
     .then(({ msg, token }) => {
       if (msg) {

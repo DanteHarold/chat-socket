@@ -15,7 +15,7 @@ const validarJWT = async () => {
   }
 
   const resp = await fetch(
-    "https://restserver-node-production.up.railway.app" + "/api/auth/",
+    "https://chat-socket-production.up.railway.app" + "/api/auth/",
     {
       headers: { "x-token": token },
     }
