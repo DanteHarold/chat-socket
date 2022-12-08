@@ -14,9 +14,12 @@ const validarJWT = async () => {
     throw new Error("No hay Token en el Servidor");
   }
 
-  const resp = await fetch("http://localhost:3000/api/auth/", {
-    headers: { "x-token": token },
-  });
+  const resp = await fetch(
+    "https://restserver-node-production.up.railway.app" + "/api/auth/",
+    {
+      headers: { "x-token": token },
+    }
+  );
   const { usuario: userDB, token: tokenDB } = await resp.json();
   localStorage.setItem("token", tokenDB);
   console.log(userDB, tokenDB);

@@ -10,11 +10,14 @@ $miFormulario.addEventListener("submit", (e) => {
     }
   }
 
-  fetch("http://localhost:3000/api/auth/login", {
-    method: "POST",
-    body: JSON.stringify(formData),
-    headers: { "Content-Type": "application/json" },
-  })
+  fetch(
+    "https://restserver-node-production.up.railway.app" + "/api/auth/login",
+    {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: { "Content-Type": "application/json" },
+    }
+  )
     .then((resp) => resp.json())
     .then(({ msg, token }) => {
       if (msg) {
